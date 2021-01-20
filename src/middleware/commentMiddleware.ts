@@ -7,13 +7,15 @@ export async function commentMiddleware(req, res, next) {
 
     try {
 
+        if(!req.url.includes('custom')){            
+            return next(); //skip middleware if no custom in url
+        }
+
         const payload = await (await new CommentService(req).getAllComments(req.query)).data;
 
         let data = findTotalComment(payload);
 
-        // console.log(' \n\n data with total comment', data[0])
-
-        req.totalComment = data;
+        req.totalComment = data; //insert middleware
 
         return next();
     }

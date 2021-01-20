@@ -51,6 +51,32 @@ export default class PostService{
 
             //massage the data:
 
+            return await findById(data,id);
+
+            // return  await findTotalCommentById(data_post, this.options?.totalComment);
+
+
+            // return single_data;
+
+            
+            
+        } catch (error) {
+            throw error
+        }
+        
+        
+    }
+
+    async findPostCustom(id){
+
+    
+     
+        try {
+
+            let data = await (await this.getAllPosts(this.options)).data;
+
+            //massage the data:
+
             let data_post = await findById(data,id);
 
             return  await findTotalCommentById(data_post, this.options?.totalComment);
