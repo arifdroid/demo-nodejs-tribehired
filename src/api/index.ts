@@ -1,6 +1,7 @@
 import express from "express";
 import helmet from 'helmet';
 import { createRateLimiter } from "./apiRateLimiter";
+import { commentMiddleware } from "../middleware/commentMiddleware";
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(defaultRateLimiter);
 app.use(helmet());
 
 // app.use(express.json());
+
+app.use(commentMiddleware);
 
 const routes = express.Router();
 
