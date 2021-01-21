@@ -3,7 +3,7 @@
   "description": "node backend",
   "scripts": {
     "start": "nodemon --watch \"src/**/*.ts\" -e ts,json --exec \"ts-node --transpile-only ./src/server.ts\"",
-    "test": "nodemon --exec \"cross-env NODE_ENV=test mocha -r ts-node/register ./src/**/*.test.ts --exit || exit 1\"",
+    "test": "nodemon --exec \"cross-env NODE_ENV=test mocha -r ts-node/register ./test/comment/comment.js --exit || exit 1\"",
     "build": "tsc",
     "db:create": "npm run build && node ./dist/database/migrations/create"
   },
@@ -18,8 +18,10 @@
   },
   "private": true,
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "cross-env": "7.0.2",
-    "mocha": "8.1.3",
+    "mocha": "^8.1.3",
     "nodemon": "2.0.4",
     "ts-node": "9.0.0",
     "typescript": "4.0.3"
