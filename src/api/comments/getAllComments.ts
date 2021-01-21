@@ -7,7 +7,7 @@ export default async (req, res, next) => {
 
     
         //class style
-        const payload  = await (await new CommentService(req).getAllComments(req.query)).data;
+        const payload  = await new CommentService(req).getAllComments(req.query);
 
         //functional style
 
